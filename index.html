@@ -2,25 +2,30 @@
 <html lang="ms">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kira Purata GPI Markah Subjek</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Kira Gred Purata (GPI)</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        html, body {
+            touch-action: manipulation;
         }
         
         body { 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-            margin: 20px; 
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif; 
+            margin: 0; 
             min-height: 100vh; 
             position: relative; 
             font-size: 16px;
+            padding: 20px;
             overflow-x: hidden;
         }
         
-        /* Animated Gradient Background - Blue Theme */
         .bg {
             position: fixed;
             top: 0;
@@ -28,155 +33,135 @@
             width: 100%;
             height: 100%;
             z-index: -1;
-            background: linear-gradient(45deg, #1e3c72, #2a5298, #667eea, #764ba2);
-            background-size: 400% 400%;
-            animation: gradient 10s ease infinite;
+            background: linear-gradient(180deg, #1e3c72 0%, #2a5298 50%, #667eea 100%);
         }
         
-        @keyframes gradient {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        @media (min-width: 768px) {
+            .orb {
+                position: fixed;
+                border-radius: 50%;
+                background: rgba(255, 255, 255, 0.08);
+                animation: float 20s infinite ease-in-out;
+                z-index: -1;
+            }
+            
+            .orb1 { width: 250px; height: 250px; top: 5%; left: 5%; }
+            .orb2 { width: 350px; height: 350px; top: 40%; right: -50px; }
+            .orb3 { width: 200px; height: 200px; bottom: 5%; left: 20%; }
+            
+            @keyframes float {
+                0%, 100% { transform: translate(0, 0); }
+                50% { transform: translate(20px, -30px); }
+            }
+            
+            .bg {
+                background: linear-gradient(45deg, #1e3c72, #2a5298, #667eea, #764ba2);
+                background-size: 400% 400%;
+                animation: gradient 15s ease infinite;
+            }
+            
+            @keyframes gradient {
+                0% { background-position: 0% 50%; }
+                50% { background-position: 100% 50%; }
+                100% { background-position: 0% 50%; }
+            }
         }
         
-        /* Floating Orbs */
-        .orb {
-            position: fixed;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
-            animation: float 15s infinite ease-in-out;
-            z-index: -1;
-        }
-        
-        .orb1 {
-            width: 200px;
-            height: 200px;
-            top: 10%;
-            left: 10%;
-            animation-delay: 0s;
-        }
-        
-        .orb2 {
-            width: 300px;
-            height: 300px;
-            top: 50%;
-            right: 5%;
-            animation-delay: -5s;
-        }
-        
-        .orb3 {
-            width: 150px;
-            height: 150px;
-            bottom: 10%;
-            left: 30%;
-            animation-delay: -10s;
-        }
-        
-        @keyframes float {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            33% { transform: translate(30px, -50px) scale(1.1); }
-            66% { transform: translate(-20px, 20px) scale(0.9); }
-        }
-        
-        /* Title */
         h1 { 
             color: #ffffff; 
             text-align: center; 
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3); 
-            font-size: 2em;
-            margin: 30px 0 20px;
-            animation: slideDown 0.8s ease-out;
+            font-size: 1.6em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
         
-        @keyframes slideDown {
-            from { opacity: 0; transform: translateY(-30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        /* Form */
         form { 
-            background: rgba(255, 255, 255, 0.95); 
-            padding: 30px; 
-            border-radius: 20px; 
-            box-shadow: 0 10px 40px rgba(0,0,0,0.2); 
-            max-width: 600px; 
-            margin: 0 auto 20px; 
-            width: 100%;
-            animation: slideUp 0.8s ease-out 0.2s both;
+            background: rgba(255, 255, 255, 0.98); 
+            padding: 20px; 
+            border-radius: 16px; 
+            box-shadow: 0 8px 32px rgba(0,0,0,0.15); 
+            max-width: 500px; 
+            margin: 0 auto;
         }
         
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        /* Labels */
         label { 
             display: block; 
-            margin: 15px 0 8px; 
+            margin: 12px 0 6px; 
             font-weight: 600; 
-            font-size: 1em;
+            font-size: 0.95em;
             color: #333;
         }
         
-        /* Inputs */
         input { 
-            padding: 14px; 
+            padding: 16px 14px; 
             width: 100%; 
             border: 2px solid #ddd; 
-            border-radius: 10px; 
+            border-radius: 12px; 
             font-size: 16px;
-            transition: all 0.3s ease;
-            background: #f5f5f5;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            background: #f8f8f8;
+            -webkit-appearance: none;
+            appearance: none;
         }
         
         input:focus { 
             outline: none;
             border-color: #2a5298;
-            box-shadow: 0 0 15px rgba(42, 82, 152, 0.3);
+            box-shadow: 0 0 0 3px rgba(42, 82, 152, 0.15);
             background: #fff;
         }
         
-        input:hover { 
-            border-color: #bbb;
+        input.error { 
+            border-color: #e74c3c;
+            background: #fff;
+            animation: shake 0.3s ease;
         }
         
-        /* Button */
+        input.error:focus {
+            border-color: #e74c3c;
+            box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.15);
+        }
+        
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+        
         button { 
-            padding: 16px 30px; 
+            padding: 18px 30px; 
             background: linear-gradient(135deg, #2a5298, #1e3c72); 
             color: white; 
             border: none; 
-            border-radius: 10px; 
-            font-size: 18px; 
+            border-radius: 12px; 
+            font-size: 17px; 
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s ease; 
+            transition: transform 0.15s, box-shadow 0.15s; 
             width: 100%; 
-            margin-top: 20px;
+            margin-top: 24px;
         }
         
         button:hover { 
-            transform: translateY(-3px); 
-            box-shadow: 0 8px 25px rgba(42, 82, 152, 0.4); 
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(42, 82, 152, 0.35);
         }
         
         button:active { 
             transform: scale(0.98); 
         }
         
-        /* Result */
         #hasil { 
             display: none;
             margin-top: 20px; 
-            padding: 25px; 
-            background: rgba(255, 255, 255, 0.95); 
-            border-radius: 20px; 
-            box-shadow: 0 10px 40px rgba(0,0,0,0.2); 
-            max-width: 600px; 
-            margin: 20px auto; 
-            width: 100%;
-            animation: popIn 0.5s ease-out;
+            padding: 24px; 
+            background: rgba(255, 255, 255, 0.98); 
+            border-radius: 16px; 
+            box-shadow: 0 8px 32px rgba(0,0,0,0.15); 
+            max-width: 500px; 
+            margin-left: auto;
+            margin-right: auto;
+            animation: popIn 0.3s ease-out;
         }
         
         #hasil.show {
@@ -184,75 +169,91 @@
         }
         
         @keyframes popIn {
-            from { opacity: 0; transform: scale(0.8); }
+            from { opacity: 0; transform: scale(0.95); }
             to { opacity: 1; transform: scale(1); }
         }
         
         #hasil p { 
             text-align: center; 
-            font-size: 1.2em;
-            margin: 10px 0;
+            font-size: 1.3em;
             color: #333;
         }
         
         #hasil strong {
             color: #2a5298;
-            font-size: 1.5em;
+            font-size: 1.6em;
         }
         
-        /* Description */
-        .desc { 
-            text-align: center; 
-            font-size: 1.1em;
-            color: #fff;
-            margin-bottom: 25px;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
-        }
-        
-        /* Mobile */
-        @media (max-width: 600px) {
-            body { margin: 10px; }
-            h1 { font-size: 1.5em; margin: 20px 0 15px; }
-            form { padding: 20px; }
-            label { margin: 12px 0 6px; }
-            input { padding: 12px; }
-            button { padding: 14px; font-size: 16px; }
+        @media (max-width: 480px) {
+            body { 
+                padding: 15px;
+                font-size: 15px;
+            }
+            
+            h1 { font-size: 1.4em; }
+            
+            form { 
+                padding: 16px;
+                border-radius: 14px;
+            }
+            
+            label { 
+                margin: 14px 0 6px;
+                font-size: 0.9em;
+            }
+            
+            input { 
+                padding: 14px 12px;
+                font-size: 16px;
+                border-radius: 10px;
+            }
+            
+            button { 
+                padding: 16px;
+                font-size: 16px;
+                margin-top: 20px;
+                border-radius: 10px;
+            }
+            
+            #hasil { 
+                padding: 20px;
+            }
+            
+            #hasil p {
+                font-size: 1.2em;
+            }
         }
     </style>
 </head>
 <body>
     <div class="bg"></div>
-    <div class="orb orb1"></div>
-    <div class="orb orb2"></div>
-    <div class="orb orb3"></div>
-
-    <h1>Kira Purata Nilai GPI</h1>
-    <p class="desc">Sila masukkan markah (dalam peratus, 0-100) untuk setiap subjek:</p>
+    
+    <h1>Kira Gred Purata (GPI)</h1>
     
     <form id="markahForm">
         <label for="bahasa_melayu">Bahasa Melayu (%):</label>
-        <input type="number" id="bahasa_melayu" min="0" max="100" required>
+        <input type="number" id="bahasa_melayu" min="0" max="100" inputmode="numeric">
         
         <label for="bahasa_english">Bahasa English (%):</label>
-        <input type="number" id="bahasa_english" min="0" max="100" required>
+        <input type="number" id="bahasa_english" min="0" max="100" inputmode="numeric">
         
         <label for="matematik">Matematik (%):</label>
-        <input type="number" id="matematik" min="0" max="100" required>
+        <input type="number" id="matematik" min="0" max="100" inputmode="numeric">
         
         <label for="sains">Sains (%):</label>
-        <input type="number" id="sains" min="0" max="100" required>
+        <input type="number" id="sains" min="0" max="100" inputmode="numeric">
         
         <label for="sejarah">Sejarah (%):</label>
-        <input type="number" id="sejarah" min="0" max="100" required>
+        <input type="number" id="sejarah" min="0" max="100" inputmode="numeric">
         
         <label for="geografi">Geografi (%):</label>
-        <input type="number" id="geografi" min="0" max="100" required>
+        <input type="number" id="geografi" min="0" max="100" inputmode="numeric">
         
         <label for="reka_bentuk">Reka Bentuk dan Teknologi (%):</label>
-        <input type="number" id="reka_bentuk" min="0" max="100" required>
+        <input type="number" id="reka_bentuk" min="0" max="100" inputmode="numeric">
         
-        <label for="pendidikan_islam">Pendidikan Islam/Bahasa Cina (%):</label>
-        <input type="number" id="pendidikan_islam" min="0" max="100" required>
+        <label for="pendidikan_islam">Pendidikan Islam/Bahasa Cina/Pendidikan Moral (%):</label>
+        <input type="number" id="pendidikan_islam" min="0" max="100" inputmode="numeric">
         
         <button type="button" onclick="kiraPurata()">Kira Purata GPI</button>
     </form>
@@ -279,28 +280,41 @@
                 { nama: "Sejarah", id: "sejarah" },
                 { nama: "Geografi", id: "geografi" },
                 { nama: "Reka Bentuk dan Teknologi", id: "reka_bentuk" },
-                { nama: "Pendidikan Islam", id: "pendidikan_islam" }
+                { nama: "Pendidikan Islam/Bahasa Cina/Pendidikan Moral", id: "pendidikan_islam" }
             ];
             
             var totalNilaiNumerik = 0;
             var semuaValid = true;
             
+            var semuaInput = document.querySelectorAll("input");
+            semuaInput.forEach(function(input) {
+                input.classList.remove("error");
+            });
+            
             for (var i = 0; i < subjek.length; i++) {
                 var sub = subjek[i];
-                var markah = parseFloat(document.getElementById(sub.id).value);
+                var inputEl = document.getElementById(sub.id);
+                var markah = inputEl.value.trim();
                 
-                if (isNaN(markah) || markah < 0 || markah > 100) {
-                    alert("Markah untuk " + sub.nama + " mestilah antara 0 dan 100.");
-                    document.getElementById(sub.id).focus();
+                if (markah === "" || isNaN(markah)) {
+                    inputEl.classList.add("error");
                     semuaValid = false;
-                    break;
+                    continue;
+                }
+                
+                markah = parseFloat(markah);
+                
+                if (markah < 0 || markah > 100) {
+                    inputEl.classList.add("error");
+                    semuaValid = false;
+                    continue;
                 }
                 
                 var nilaiNumerik = hitungNilaiNumerik(markah);
                 if (nilaiNumerik === null) {
-                    alert("Markah untuk " + sub.nama + " tidak valid.");
+                    inputEl.classList.add("error");
                     semuaValid = false;
-                    break;
+                    continue;
                 }
                 
                 totalNilaiNumerik += nilaiNumerik;
@@ -318,20 +332,28 @@
             
             void hasilDiv.offsetWidth;
             hasilDiv.classList.add("show");
+            
+            hasilDiv.scrollIntoView({ behavior: "smooth", block: "nearest" });
         }
-
+        
         var inputIds = ["bahasa_melayu", "bahasa_english", "matematik", "sains", "sejarah", "geografi", "reka_bentuk", "pendidikan_islam"];
         inputIds.forEach(function(id, index) {
             document.getElementById(id).addEventListener("keydown", function(event) {
                 if (event.key === "Enter") {
                     event.preventDefault();
+                    this.classList.remove("error");
+                    
                     var nextIndex = index + 1;
                     if (nextIndex < inputIds.length) {
                         document.getElementById(inputIds[nextIndex]).focus();
                     } else {
-                        document.querySelector("button").focus();
+                        kiraPurata();
                     }
                 }
+            });
+            
+            document.getElementById(id).addEventListener("input", function() {
+                this.classList.remove("error");
             });
         });
     </script>
